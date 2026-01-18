@@ -17,6 +17,21 @@
 // i also want to save items to cart using localStorage. will have to figure it out how to do it later.
 // i am gonna use fetch.
 
+// script.mjs
+// GOAL: this is the main (entry point) of the application.
+// GOAL: it imports functions from api.js and ui.js and connects them.
+// GOAL: it handles all the user interactions (clicks).
+
+// api.mjs:
+// this module is responsible for fetching data from the dummyjson.com API.
+// it exports the fetch function so script.mjs can use it.
+// it should handle the network request part, not the UI part.
+
+// ui.mjs:
+// this module will handles all the visual stuff.
+// should create HTML cards dynamically based on data.
+// should show/hide loading messages.
+// it should also manage the cart UI. (i have an idea how to do it, saw an example on stackoverflow, they used localStorage.getitem(). refer that) 
 
 
 ///////// Things to keep in mind (requirement list):
@@ -30,17 +45,21 @@
 
 
 //// Remember (from dylan/lecture):
-
+// since i am gonna use fetch, remember it returns a promise, so i have to await it
+// don't forget to parse the JSON with .json(), else you wont see the data (remember that example we did in the class)
+// dont forget to do try/catch blocks for async code as well
 
 
 
 //////// WHAT I KNOW:
 // the api url is 'https://dummyjson.com/products'
-
-
+// i need to import getProductsData from api.js
+// i need to import display functions from ui.js
 
 
 ////////LOGIC - step by step
+// step 1: create the final structure of the project: 2 more script api.mjs and ui.mjs and shop.html
+
 
 
 
