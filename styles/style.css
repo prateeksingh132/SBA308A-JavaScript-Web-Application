@@ -14,3 +14,51 @@ body {
 }
 
 
+/* Remember: keep the theme similar to sba 307 and 316: blue and orange */
+
+/* -------------- Main Page Styling --------------*/
+/* Goal: center the banner content in the middle of the screen */
+body {
+    background-color: #f4f4f9; /* light grey background */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    /* FUTUREWORK: explore different cool fonts style */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --------------  Navbar styling -------------- */
+/* Goal: similar to sba 307, refer the code */
+.navBar {
+    background-color: #003366; /* dark blue */
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logoBox {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.navLinksList {
+    list-style: none; /* remove bullet points */
+    display: flex;
+    gap: 20px;
+}
+
+.navLinksList a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+/* hover effect for links */
+.navLinksList a:hover {
+    color: #ff6600; /* orange */
+}
