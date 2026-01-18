@@ -1,18 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css" />
     <!-- FUTUREWORK: i dont need the axios here, but still keep it in case fetch gives me issue later on -->
     <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script defer src="./scripts/script.mjs"></script>
-    <title>SBA 308A: JavaScript Web Application</title>
+    <!-- dont need the script here, will need it in the shop.html page -->
+    <!-- <script defer src="./scripts/script.mjs"></script> -->
+    <title>GadgetShack - Future of Tech</title>
 </head>
-<body>
-    
 
-    <h1>TESTING: SBA 308A: JavaScript Web Application</h1>
+<body>
+
+    <!-- Goal: keep it similar ot SBA 307 gadegtshack homepage, maybe add a little background pictue this time-->
+    <!-- keep it simple, keep user perspective in mind -->
+    <!-- rememebr to add Register page from SBA 316 (in the nav and maybe add separate html and integrate is you have time) -->
+    <!-- also add cart in the nav -->
+
+    <nav class="navBar">
+        <div class="logoBox">GadgetShack</div>
+        <ul class="navLinksList">
+            <li><a href="index.html" class="activeLink">Home</a></li>
+            <li><a href="./pages/shop.html">Shop Products</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#" id="navCartCount">Cart (0)</a></li>
+        </ul>
+    </nav>
+
+    <header class="topBannerBox">
+        <div class="bannerContent">
+            <h1>Upgrade Your Tech Life</h1>
+            <p>The best smartphones, laptops, and accessories are just a click away.</p>
+            <a href="./pages/shop.html" class="shopNowBtn">Browse Collection</a>
+        </div>
+    </header>
+
+    <footer>
+        <p>&copy; 2025 GadgetShack.</p>
+    </footer>
 
 </body>
+
 </html>
