@@ -13,7 +13,44 @@
 
 <body>
 
-    
+    <!-- Goal: this page will show all the products from the api-->
+    <!-- keep it similar ot SBA 307 gadegtshack nav pages -->
+    <!-- add three buttons - all items, smartphones, laptops -->
+    <!-- keep the navbar and footer, same as homepage -->
+    <!-- keep it simple, keep user perspective in mind -->
+    <!-- rememebr to add Register page from SBA 316 (in the nav and maybe add separate html and integrate is you have time) -->
+    <!-- add cart in the nav -->
+    <!-- add a div for the api fetch items -->
+
+    <nav class="navBar">
+        <div class="logoBox">GadgetShack</div>
+        <ul class="navLinksList">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="shop.html" class="activeLink">Shop Products</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#" id="navCartCount">Cart (0)</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <div class="filterSection">
+            <h2>Tech Galore!!</h2>
+            <div class="buttonGroup">
+                <button id="btnAll" class="filterBtn">All Tech</button>
+                <button id="btnPhones" class="filterBtn">Smartphones</button>
+                <button id="btnLaptops" class="filterBtn">Laptops</button>
+            </div>
+
+        </div>
+
+        <div id="itemsGridArea" class="itemsGrid">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 GadgetShack.</p>
+    </footer>
+
 
 </body>
 
