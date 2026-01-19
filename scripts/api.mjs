@@ -65,11 +65,14 @@ export async function fetchTheData(categoryName) {
         //console.log('TESTING: data.products: ', data.products);
         ////////////
 
-        // logic: return the products array so main.js can handle it
+        // logic: return the products array so script.js can handle it
         return data.products;
 
     } catch (err) {
         console.error("Error fetching data:", err.message);
+        // i also have to tell main script script.mjs if an error happens. will think about it when i do testing in script.mjs.
+
+        
     }
 
 }
