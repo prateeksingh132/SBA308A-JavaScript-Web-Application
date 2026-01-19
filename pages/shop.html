@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../styles/style.css" />
     <!-- FUTUREWORK: i dont need the axios here, but still keep it in case fetch gives me issue later on -->
     <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script defer src="../scripts/script.mjs"></script>
+    <!-- Note: i found out that i have to add type=module in the script tag, since i am using .mjs for my scripts. -->
+    <script defer type="module" src="../scripts/script.mjs"></script>
     <title>GadgetShack - Shop</title>
 </head>
 
@@ -41,6 +42,11 @@
                 <button id="btnPhones" class="filterBtn">Smartphones</button>
                 <button id="btnLaptops" class="filterBtn">Laptops</button>
             </div>
+
+            <!-- added this to show the laoding text info... will work on it later -->
+             <!-- FUTUREWORK: make sure loading text logic is done in ui.mjs -->
+            <p id="loadingText">Fetching latest products...</p>
+
 
         </div>
 
