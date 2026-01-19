@@ -118,3 +118,11 @@ btnAll.addEventListener('click', () => loadCategoryItems('all'));
 btnPhones.addEventListener('click', () => loadCategoryItems('smartphones'));
 
 btnLaptops.addEventListener('click', () => loadCategoryItems('laptops'));
+
+
+
+////// FUTUREWORK: loading text logic
+
+
+
+////// FUTUREWORK: add to cart logic
