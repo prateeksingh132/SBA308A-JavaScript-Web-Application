@@ -53,18 +53,15 @@
 
 //////// WHAT I KNOW:
 // the api url is 'https://dummyjson.com/products'
-// i need to import getProductsData from api.js
-// i need to import display functions from ui.js
+// i need to import the api data (fetchTheData function) from api.js
+// i need to import display functions (makeCards) from ui.js
 
 
-////////LOGIC - step by step
-// step 1: create the final structure of the project: 2 more script api.mjs and ui.mjs and shop.html
-
-
-
-
-
-
+////////LOGIC - for main script
+// create the final structure of the project: 2 more script api.mjs and ui.mjs and shop.html
+// create a function which will coordinates with my api.mjs and the ui.mjs, its gonna fetch the data based on category (button click event) that i select
+// create click event listeners for 3 filter buttons: All Tech, Smartphones, Laptops
+//
 
 
 //////////////////////////////////// SBA 308A
@@ -73,3 +70,51 @@ console.log("\n");
 console.log("////////////// SBA 308A: JavaScript Web Application ////////////// ");
 console.log("\n");
 
+// imports
+import { fetchTheData } from './api.mjs';
+import { makeCards } from './ui.mjs';
+
+// getting the required DOM elements first. these are 3 elements (buttons): all tech, smatphones and laptops
+// Goal: i am gonna select the elements which i think i am gonna use later
+const btnAll = document.getElementById('btnAll');
+const btnPhones = document.getElementById('btnPhones');
+const btnLaptops = document.getElementById('btnLaptops');
+const itemsGridArea = document.getElementById('itemsGridArea');
+
+
+// LOGIC:
+
+// step 1: create a function which will coordinates with my api.mjs and the ui.mjs, its gonna fetch the data based on category (button click event) that i select
+// Goal: fetch the data (from api.mjs) and then display the data in the dom (using ui.mjs)
+// i have two functions fetchTheData and makeCards that i have to use
+
+async function loadCategoryItems(categoryName) {
+
+    try {
+        // await the data from the api module
+        const dataArray = await fetchTheData(categoryName);
+
+        // pass the data to the ui module
+        makeCards(dataArray);
+
+    } catch (error) {
+        // if api fails, i wanna show an error on screen
+        // i will extend this later, maybe create a function in the ui module later.
+        console.log("Sorry, something went wrong. Please try again later.");
+    }
+
+}
+
+
+
+///////// EVENT LISTENERS
+
+// step 2: 3 filter buttons
+// Gaol: the 3 buttons should filter the items based on categories: all tech, smartphones and laptops
+// from dummyjson.com, the two category names in the url i need are: smartphones, laptops
+
+btnAll.addEventListener('click', () => loadCategoryItems('all'));
+
+btnPhones.addEventListener('click', () => loadCategoryItems('smartphones'));
+
+btnLaptops.addEventListener('click', () => loadCategoryItems('laptops'));
