@@ -120,6 +120,12 @@ btnPhones.addEventListener('click', () => loadCategoryItems('smartphones'));
 btnLaptops.addEventListener('click', () => loadCategoryItems('laptops'));
 
 
+// i also want all the items to be displayed when i click on browse button on homepage  or shop button in nav bar
+// calling functions to set up page when it loads
+loadCategoryItems('all');
+
+
+
 
 ////// FUTUREWORK: loading text logic
 
