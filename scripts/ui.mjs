@@ -105,7 +105,22 @@ export function makeCards(productsArray) {
 
 
 ////// FUTUREWORK: loading text logic
+// step 2: i am gonna create some helper functions for showing Loading/Errors text message on DOM.
+// this is adding to the user interaction
+// LOGIC: simple functions to change display property
 
+export function showLoadingSpinner() {
+    loadingText.style.display = 'block';
+}
+
+export function hideLoadingSpinner() {
+    loadingText.style.display = 'none';
+}
+
+export function showErrorMessage(message) {
+
+    itemsGridArea.innerHTML = `<p style="color:red; text-align:center;">${message}</p>`;
+}
 
 
 ////// FUTUREWORK: cart logic

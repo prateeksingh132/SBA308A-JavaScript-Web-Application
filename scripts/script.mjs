@@ -72,7 +72,7 @@ console.log("\n");
 
 // imports
 import { fetchTheData } from './api.mjs';
-import { makeCards } from './ui.mjs';
+import { makeCards, showLoadingSpinner, hideLoadingSpinner, showErrorMessage } from './ui.mjs';
 
 // getting the required DOM elements first. these are 3 elements (buttons): all tech, smatphones and laptops
 // Goal: i am gonna select the elements which i think i am gonna use later
@@ -90,6 +90,9 @@ const itemsGridArea = document.getElementById('itemsGridArea');
 
 async function loadCategoryItems(categoryName) {
 
+    // start loading animation
+    showLoadingSpinner();
+
     try {
         // await the data from the api module
         const dataArray = await fetchTheData(categoryName);
@@ -101,6 +104,13 @@ async function loadCategoryItems(categoryName) {
         // if api fails, i wanna show an error on screen
         // i will extend this later, maybe create a function in the ui module later.
         console.log("Sorry, something went wrong. Please try again later.");
+
+        // so here is the function i created in ui.mjs to show the error message in DOM
+        showErrorMessage("Sorry, something went wrong. Please try again later.");
+
+    } finally {
+        // stop loading animation no matter what
+        hideLoadingSpinner();
     }
 
 }
@@ -128,7 +138,7 @@ loadCategoryItems('all');
 
 
 ////// FUTUREWORK: loading text logic
-
+// DONE, added in the function
 
 
 ////// FUTUREWORK: add to cart logic

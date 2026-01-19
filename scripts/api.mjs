@@ -36,6 +36,16 @@ export async function fetchTheData(categoryName) {
 
         console.log(`Fetching data from: ${finalUrl}`);
 
+        ////////////TESTING
+        //console.log('TESTING: creating artificial delay: ');
+        ////////////
+
+        // Artifical delay:
+        // i added this bcuz the api is too fast and i want to see my cool loading text functionality.
+        // this pauses the code for 1500 milliseconds (1.5 seconds), so i can test my loading spinner.
+        await wait(1500);
+
+
         // have to use await here as well as in data, remember fetch can take time to have to await it. code pauses here until data comes back.
         const response = await fetch(finalUrl);
 
@@ -71,10 +81,22 @@ export async function fetchTheData(categoryName) {
     } catch (err) {
         console.error("Error fetching data:", err.message);
         // i also have to tell main script script.mjs if an error happens. will think about it when i do testing in script.mjs.
+        // so, i can just throw the error again. that way so script.mjs will catch it and it will knows something went wrong and can show alert
 
-        
+        throw err;
+
     }
 
+}
+
+
+// 
+// logic: i found this code on stackoverflow to create a delay.
+// i need this to return a promise so i can use 'await' on it.
+function wait(timeInMS) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, timeInMS);
+    });
 }
 
 
