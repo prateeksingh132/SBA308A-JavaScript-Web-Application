@@ -139,3 +139,33 @@ footer {
     padding: 15px;
     margin-top: auto;
 }
+
+
+/* --------------  Loading Text Animation --------------  */
+/* Goal: i am gonna style the loading text to look nicer. */
+/* i added an animation property to make it pulse while waiting. */
+/* i am gonna refer this example on stackoverflow: https://stackoverflow.com/questions/31789537/how-do-i-dictate-the-size-of-the-animate-pulse-feature-using-css */
+
+#loadingText {
+    font-size: 1.2rem;
+    color: #ff6600; 
+    font-weight: bold;
+    margin-top: 20px;
+    
+    /* Animation: name: pulseEffect, its gonna work for a duration of 1.5 seconds */
+    /* iteration: infinite - it will keeps going until my script (script.mjs) hides it */
+    
+    animation: pulseEffect 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseEffect {
+  0%{
+    transform: scale(0.98);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(0.98);
+  }
+}
