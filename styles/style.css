@@ -131,21 +131,15 @@ body {
     background-color: #0056b3;
 }
 
-/* --------------  Footer styling --------------   */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: auto;
-}
+
 
 
 /* --------------  Loading Text Animation --------------  */
 /* Goal: i am gonna style the loading text to look nicer. */
-/* i added an animation property to make it pulse while waiting. */
 /* i am gonna refer this example on stackoverflow: https://stackoverflow.com/questions/31789537/how-do-i-dictate-the-size-of-the-animate-pulse-feature-using-css */
 
+/* so, i have added an animation property to make it pulse while waiting. */
+/* FUTUREWORK: maybe add some more animation to the html cards that you get after loading */
 #loadingText {
     font-size: 1.2rem;
     color: #ff6600; 
@@ -168,4 +162,97 @@ footer {
   100% {
     transform: scale(0.98);
   }
+}
+
+
+/* --------------  Home page styling --------------   */
+/* -------------- Hero Banner styling-------------- */
+/* Goal: i want to darken the background image so my white text can pop out more.*/ 
+/* i searched online and found that you can put a linear-gradient on top of an image by using the background-image property with commas. */
+/* found this example on stackoverflow:  https://stackoverflow.com/questions/16589519/use-css-gradient-over-background-image */
+/* REMEMBER: when i put the image first, it sits on top and then hides the gradient. so gradient has to come first*/
+/* FUTUREWORK: since i fixed the height of my banner box, i need to figure out how to make it dynamic, so that it covers full page irrespective of screen size */
+
+.topBannerBox {
+    /* rgba(0,0,0,0.6) means black with 60% opacity. */
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/banner3.jpg'); 
+    background-size: cover; /* it makes image covers whole box, else it will looks small */
+    background-position: center; /* it keeps the center of image visible */
+    height: 850px; /* take up most of the laptop screen, will figure out later how to make it dynamic */
+    /* using flexbox to center the text inside */
+    display: flex;
+    justify-content: center; /* centers horizontal */
+    align-items: center; /* centers vertical */
+    text-align: center;
+    color: white;
+}
+
+/* styling the heading inside the banner */
+.bannerContent h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* button styling */
+/* Remember: the inline-block display allows me to add padding */
+.shopNowBtn {
+    display: inline-block;
+    background-color: #ff6600;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    /* Animation: simple background color change */
+    transition: background-color 0.3s ease;
+}
+
+.shopNowBtn:hover {
+    background-color: #843500; /* darker orange */
+}
+
+
+/* -------------- shop page styling -------------- */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    /* in sba 307 I tried using flex-grow: 1 to make the footer stick to the bottom. but commented it out since margin-top auto in footer does the same */
+    /* it makes this container take up all available space so footer stays down. */
+    flex-grow: 1;
+}
+
+.filterSection {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* buttons styling */
+.filterBtn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #2c3e50;
+    background-color: white;
+    color: #2c3e50;
+    cursor: pointer;
+    border-radius: 20px;
+    /* Animation: change background and text color smoothly on hover */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.filterBtn:hover {
+    background-color: #e67e22;
+    color: white;
+}
+
+
+
+/* --------------  Footer styling --------------   */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    /* margin top auto also keeps the footer stays down */
+    margin-top: auto;
 }
