@@ -72,13 +72,16 @@ i had to figure out how to attach the listener to the *parent* container (`items
 **What would you add to,or change about your application if given more time?**
 
 (1) **Cart Page:** right now, the cart just updates a number in the navbar (`Cart (3)`). i would like to create a separate `cart.html` page that reads the `localStorage` and displays the actual list of items so the user can see what they added.
+
 (2) **Better Error Handling:** Currently, i just show a red text message in the DOM if the API data fetching fails. i would like to make a nicer "Error Card" or a popup modal.
+
 (3) **Register page from SBA 316:** i would like to integrate the register page i created in my SBA 316 project in this project.
 
 
 **Use this space to make notes for your future self about anything that you think is important to remember about this process, or that may aid you when attempting something similar again**
 
 (1)  Whenever creating elements that are created after page loads (like from an API), always attach the click listener to the parent div. that way i can use the event delegation.
+
 (2) Always use `JSON.stringify()` when saving and `JSON.parse()` when retrieving data from local storage, else you get `[object Object]`.
 
 
