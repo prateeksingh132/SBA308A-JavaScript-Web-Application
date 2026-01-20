@@ -72,7 +72,7 @@ console.log("\n");
 
 // imports
 import { fetchTheData } from './api.mjs';
-import { makeCards, showLoadingSpinner, hideLoadingSpinner, showErrorMessage } from './ui.mjs';
+import { makeCards, showLoadingSpinner, hideLoadingSpinner, showErrorMessage, addToMyCart, updateCartCount } from './ui.mjs';
 
 // getting the required DOM elements first. these are 3 elements (buttons): all tech, smatphones and laptops
 // Goal: i am gonna select the elements which i think i am gonna use later
@@ -142,3 +142,32 @@ loadCategoryItems('all');
 
 
 ////// FUTUREWORK: add to cart logic
+
+// step 3: 
+// so, normally, to make a button work, i would just select it by id and add an event listener
+// but, the issue is that the add to cart button doesnt exist when the page loads. They are created later in ui.mjs once we get the json data from api.
+// so, this means that i cannot attach event listeners to them directly at the start. instead, i can attach the listener to the parent container div (itemsGridArea).
+// i am relying on the concept of event bubbling here (from the lecture). when i click a button inside the dom, that click will bubbles up to the parent and that parent catches it and handles it.
+// so, when a click happens, i check if the target was a button with class addToCartBtn.
+// i referred two stackoverflow example where they are doing the same thing: https://stackoverflow.com/questions/50311972/how-to-save-items-to-cart-using-localstorage
+// and this one: https://stackoverflow.com/questions/23554456/how-do-i-store-a-simple-cart-using-localstorage
+
+itemsGridArea.addEventListener('click', function (event) {
+    // first, i need to find out what exactly was clicked since i attached this even listener on whole div. the event.target tells me that
+    // and then check if user clicked the add button
+    if (event.target.classList.contains('addToCartBtn')) {
+        // so, i added a new data-title attribute to the button (addToCartBtn) in ui.mjs, so that i can get the product name from this data attribute 
+        const title = event.target.getAttribute('data-title');
+
+        // now that i know what was clicked, i just pass that name to my helper function in ui.mjs, which handles the whole localStorage saving part. 
+        // calling the cart function
+        addToMyCart(title);
+    }
+});
+
+
+// if i referesh the page, the cart count goes to its default 0. so i am gonna put the updatecartcount function here so that it runs immediately when the page loads.
+updateCartCount();
+
+
+// FUTUREWORK: i wanna create a cart page, which fetches these clicked items from localstorage and displays it

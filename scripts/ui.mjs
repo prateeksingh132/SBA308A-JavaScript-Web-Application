@@ -36,7 +36,7 @@ export function makeCards(productsArray) {
     // productsArray is my item list, from api.
 
     // clear container first bcuz otherwise new items will stack on old ones
-    if (itemsGridArea) itemsGridArea.innerHTML = '';
+    itemsGridArea.innerHTML = '';
 
     // i am using a standard for loop to go through the item list.
     for (let i = 0; i < productsArray.length; i++) {
@@ -49,6 +49,8 @@ export function makeCards(productsArray) {
 
         // create the inner content
         // the json data from api contains a thumbnail property, that i can use in the item box
+        // Note: i added a data-title attribute to the button for add to cart logic.
+        // this helps me identify which product was clicked later in script.mjs.
 
         box.innerHTML = `
             <img src="${item.thumbnail}" alt="${item.title}" class="itemImage">
@@ -56,14 +58,14 @@ export function makeCards(productsArray) {
                 <h3>${item.title}</h3>
                 <p class="itemPrice">$${item.price}</p>
                 <p>${item.description.substring(0, 50)}...</p> 
-                <button class="addToCartBtn">Add to Cart</button>
+                <button class="addToCartBtn" data-title="${item.title}">Add to Cart</button>
             </div>
         `;
         // the description properties in dummyjson.com api for some item is too big
         // FUTUREWORK: add styling for itemImage, itemInfo, itemPrice, addToCartBtn
 
         // append to the container
-        if (itemsGridArea) itemsGridArea.appendChild(box);
+        itemsGridArea.appendChild(box);
     }
 }
 
@@ -124,3 +126,65 @@ export function showErrorMessage(message) {
 
 
 ////// FUTUREWORK: cart logic
+
+
+// step 3: save items to cart using localStorage
+// Goal: basically, i am trying to simulate a real shopping cart. The problem is, normally in javascript, if i create an array and add items to it, everything disappears the moment i refresh the page.
+// So, I needed a way to keep the cart data even if I refresh the page. 
+// i am using localStorage which is kind of like a small database that lives in the browser. it stays there even if i close the tab or refresh the page.
+// so, i have to update the localStorage and the UI. 
+// I referred two stackoverflow example where they are doing the same thing: https://stackoverflow.com/questions/50311972/how-to-save-items-to-cart-using-localstorage
+// and this one: https://stackoverflow.com/questions/23554456/how-do-i-store-a-simple-cart-using-localstorage
+// also, check this website later on, it has more details on how to use local storage and what else can i do with it for future expansion: https://www.taniarascia.com/how-to-use-local-storage-with-javascript/
+
+
+export function addToMyCart(itemName) {
+    // get existing cart from storage
+    // so it seems that localStorage only stores strings, this is tricky bcuz when i get the data out, it comes out as a long string like ['asad', 'adsd']
+    // i have to use json.parse to turn it back into an array so i can use it..
+    // also, if gadgetShackCart doesn't exist yet, it returns null, so i use || [] to start with an empty array.
+    let myCart = JSON.parse(localStorage.getItem('gadgetShackCart')) || [];
+
+
+    ////////////TESTING
+    //console.log('TESTING: myCart: ', myCart);
+    ////////////
+
+
+    // add the new product in my mycart array
+    myCart.push(itemName);
+
+    ////////////TESTING
+    //console.log('TESTING: myCart: ', myCart);
+    ////////////
+
+    // save back to storage
+    // now, i checked that saving it back to loacl storage as array, it saved somethign weird like [object Object]
+    // so, i have to use json.stringify to convert it back to string and then save
+    localStorage.setItem('gadgetShackCart', JSON.stringify(myCart));
+
+
+    ////////////TESTING
+    //console.log('TESTING: localStorage.getItem('gadgetShackCart'): ', localStorage.getItem('gadgetShackCart'));
+    ////////////
+
+
+    // update the cart count in navbar immediately so i can see the change
+    updateCartCount();
+
+    // i am using BOM alert here to confirm to user
+    window.alert(`${itemName} added to cart!`);
+}
+
+// step 4: create a helper function that will update the cart count in DOM (navbar)
+export function updateCartCount() {
+    // so, i need to read the array length to show how many items are in cart
+    let myCart = JSON.parse(localStorage.getItem('gadgetShackCart')) || [];
+
+    ////////////TESTING
+    //console.log('TESTING: myCart: ', myCart);
+    ////////////
+
+    navCartCount.textContent = `Cart (${myCart.length})`;
+
+}
