@@ -95,6 +95,10 @@ https://stackoverflow.com/questions/50311972/how-to-save-items-to-cart-using-loc
 
 https://stackoverflow.com/questions/31789537/how-do-i-dictate-the-size-of-the-animate-pulse-feature-using-css
 
+https://stackoverflow.com/questions/16589519/use-css-gradient-over-background-image
+
+
+
 
 
 
